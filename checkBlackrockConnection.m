@@ -27,7 +27,7 @@ function closeConnections = checkBlackrockConnection(onlineNSP,address)
 % Author: Joshua Adkinson
 
 closeConnections = false;
-for i = onlineNSP
+for i = onlineNSP(:).'
     try
         isrec = cbmex('fileconfig','instance',i-1);
         if ~isrec
@@ -36,16 +36,16 @@ for i = onlineNSP
     catch ME
         switch ME.identifier
             case 'CBMEX:NoRecording'
-                disp(ME.message)
+                fprintf('\n%s\n',ME.message)
             otherwise
-                disp(['Connection to NSP',int2str(i),' needs to be restarted.'])
+                fprintf('Connection to NSP%d needs to be restarted.',i)
                 try
                     cbmex('open','central-addr',address{i},'instance',i-1);
                 catch ME2
-                    disp(['Reconnection to NSP',int2str(i),' unsuccessful. Stop recording manually!!!'])
+                    fprintf('Reconnection to NSP%d unsuccessful. Stop recording manually!!!',i)
                     rethrow(ME2)
                 end
-                disp(['Reconnection to NSP',int2str(i),' successful.'])
+                fprintf('Reconnection to NSP%d successful.',i)
                 closeConnections = true;
         end
     end

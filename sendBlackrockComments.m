@@ -21,8 +21,8 @@ function sendBlackrockComments(comment,onlineNSP)
 if length(comment)>92
     warning('Input comment exceeds 92 character limit. Comment will be truncated on the recording.');
 end
-for i = 1:numel(onlineNSP)
-    cbmex('comment', 16777215, 0, comment,'instance',onlineNSP(i)-1)
+for i = onlineNSP(:).'
+    cbmex('comment', 16777215, 0, comment,'instance',i-1)
 end
 
 end

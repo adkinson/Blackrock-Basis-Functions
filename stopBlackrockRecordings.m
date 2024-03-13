@@ -24,7 +24,7 @@ function stopBlackrockRecordings(savefile,onlineNSP,camRec,closeConnections)
 %% Stopping Recording
 try
     % Stop NSPs
-    for i = flip(onlineNSP)
+    for i = flip(onlineNSP(:).')
         if camRec && i==1
             cbmex('digitalout',2,'disable','instance',i-1)
             pause(0.05)

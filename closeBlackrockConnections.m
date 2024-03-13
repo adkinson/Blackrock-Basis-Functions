@@ -18,7 +18,7 @@ function closeBlackrockConnections(onlineNSP)
 %
 % Author: Joshua Adkinson
 
-for i = flip(onlineNSP)
+for i = flip(onlineNSP(:).')
         cbmex('close','instance',i-1)
 end
 

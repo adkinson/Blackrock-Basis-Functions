@@ -36,9 +36,10 @@ for i=1:length(address)
     catch
         continue
     end
-    disp(['NSP',int2str(i),' Active'])
+    fprintf('NSP%d Active',i)
     potentialNSP(i) = true;
 end
+fprintf('\n')
 onlineNSP = find(potentialNSP);
 
 end

@@ -69,7 +69,7 @@ try
         cameraControl('start',saveFilename)
     end
     % Start NSPs
-    for i = onlineNSP
+    for i = onlineNSP(:).'
         cbmex('fileconfig',[savefile,suffix{i}],comment,1,'instance',i-1)
         timerNSP(i) = tic;
     end
@@ -83,13 +83,13 @@ try
     end
     if ~rec
         fprintf('One of the File Storage Apps failed to initialize a recording.\nAffected File: %s\nReattempting initiation and resetting timers...\n',savefile)
-        for i = onlineNSP
+        for i = onlineNSP(:).'
             cbmex('fileconfig',[savefile,suffix{i},'_reattempt'],'',1,'instance',i-1,'option','none')
         end
     end
     
     % Send Starting Comment
-    for i = onlineNSP
+    for i = onlineNSP(:).'
         cbmex('comment', 255, 0,['NSP',int2str(i),' Recording Started'],'instance',i-1);
     end
 

@@ -37,8 +37,8 @@ function isrec = checkBlackrockRecordings(onlineNSP)
 % Author: Joshua Adkinson
 
 isrec = false(size(onlineNSP));
-for i = onlineNSP
-    isrec(i) = cbmex('fileconfig','instance',i-1);
+for i = onlineNSP(:).'
+    isrec(i) = cbmex('fileconfig','instance',onlineNSP(i)-1);
 end
 
 end
