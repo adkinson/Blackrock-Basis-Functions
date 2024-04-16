@@ -1,4 +1,4 @@
-function sendBlackrockComments(comment,onlineNSP)
+function sendBlackrockComments(comment,onlineNSP,commentColor)
 %SENDBLACKROCKCOMMENTS Wrapper function sending comments to potentially
 %multiple NSPs
 %
@@ -17,12 +17,14 @@ function sendBlackrockComments(comment,onlineNSP)
 %           session
 %
 % Author: Joshua Adkinson
-
+if nargin<3
+    commentColor = 16777215; %red
+end
 if length(comment)>92
     warning('Input comment exceeds 92 character limit. Comment will be truncated on the recording.');
 end
 for i = onlineNSP(:).'
-    cbmex('comment', 16777215, 0, comment,'instance',i-1)
+    cbmex('comment', commentColor, 0, comment,'instance',i-1)
 end
 
 end
