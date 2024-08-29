@@ -33,6 +33,9 @@ function [camRec] = startBlackrockRecordings(savefile,onlineNSP,camRec,comment)
 %           recording
 %
 % Author: Joshua Adkinson
+%
+% NOTE: This function uses some functions that can be found in the
+% following GitHub repository: https://github.com/adkinson/MATLAB_Utilities
 
 %% Default Inputs
 [filepath,saveFilename] = fileparts(savefile);

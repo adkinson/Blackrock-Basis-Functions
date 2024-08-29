@@ -20,6 +20,9 @@ function stopBlackrockRecordings(savefile,onlineNSP,camRec,closeConnections)
 %           Blackrock Neurotech NSPs
 %
 % Author: Joshua Adkinson
+%
+% NOTE: This function uses some functions that can be found in the
+% following GitHub repository: https://github.com/adkinson/MATLAB_Utilities
 
 %% Stopping Recording
 try
