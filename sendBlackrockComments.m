@@ -19,7 +19,7 @@ function sendBlackrockComments(comment,onlineNSP,commentColor)
 %                each value ranging between 0 and 255
 %
 % Author: Joshua Adkinson
-if nargin<3
+if nargin<3 || isempty(commentColor)
     commentColor = 16777215; % White
 else
     commentColor = flip(commentColor)*[256^2 256 1]';
